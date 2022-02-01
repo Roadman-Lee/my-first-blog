@@ -45,3 +45,8 @@ def post_draft_list(request):
     posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
     #(published_date__isnull=True) 코드로 발행되지 않은 글 목록을 가지고온다.
     return render(request, 'blog/post_draft_list.html', {'posts': posts})
+
+def post_publish(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.publish()
+    return redirect('post_detail', pk=pk)
