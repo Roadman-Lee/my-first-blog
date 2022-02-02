@@ -19,7 +19,3 @@ class Post(models.Model): # models.Model은 Post가 장고 모델임을 의미�
 
     def __str__(self):
         return self.title
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
